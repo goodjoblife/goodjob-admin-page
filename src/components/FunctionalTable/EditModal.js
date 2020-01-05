@@ -116,7 +116,10 @@ const EditModal = (props: Props) => {
             經驗
           </h2>
         )}
-        {propOr([], 'sections')(form).map(({ subtitle, content, id }) => (
+        {propOr(
+          [],
+          'sections'
+        )(form).map(({ subtitle, content, id }) => (
           <ListItem key={id}>
             <ListItemMeta title={subtitle} description={content} />
           </ListItem>

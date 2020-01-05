@@ -3,8 +3,7 @@ import React from 'react';
 import { Layout } from 'antd';
 import { withRouter, type Location } from 'react-router-dom';
 import { type HOC, compose } from 'recompose';
-
-import styles from './LoginPage.m.css';
+import './LoginPage.m.css';
 import FacebookLogo from './FacebookLogo.component.svg';
 
 const { Content } = Layout;
@@ -34,7 +33,7 @@ const LoginPage = ({ location: { pathname } }: Props & PropsFromHOC) => (
       }}
     >
       <a href={`${REACT_APP_API_HOST}/auth/facebook?redirect=${pathname}`}>
-        <FacebookLogo className={styles.loginLogo} />
+        <img src={FacebookLogo} className="loginLogo" alt="FacebookLogo" />
       </a>
     </Content>
   </Layout>

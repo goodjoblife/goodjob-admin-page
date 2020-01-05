@@ -13,7 +13,6 @@ import { LOGIN_STATUS, type LoginStatus } from '../../shared/constants';
 import LoginPage from '../LoginPage';
 
 import Header from './Header';
-import Sidebar from './Sidebar';
 
 type Props = {
   children: React.Node
@@ -31,12 +30,7 @@ const renderContent: RenderContent = ({ children, loginStatus }) => {
       return null;
     }
     case LOGIN_STATUS.LOGIN_SUCCESS: {
-      return (
-        <Layout>
-          <Sidebar />
-          {children}
-        </Layout>
-      );
+      return <Layout>{children}</Layout>;
     }
     case LOGIN_STATUS.LOGIN_FAIL:
     default: {

@@ -29,7 +29,7 @@ const COLUMNS = [
     title: '創建時間',
     dataIndex: 'created_at',
     key: 'created_at',
-    render: createdAt => moment(createdAt).format('LLLL'),
+    render: createdAt => moment(createdAt).format(),
     sorter: true
   },
   {
@@ -119,6 +119,7 @@ const TimeAndSalary = ({ setSearchObj, expData, ...restProps }: Props & PropsFro
         'salary_type',
         'salary_amount'
       ]}
+      size="small"
       {...restProps}
     />
   </AdminLayout>

@@ -9,9 +9,14 @@ type Props = {
 };
 
 const AdminLayout = ({ children }: Props) => (
-  <Layout style={{ padding: '0 24px 24px' }}>
+  <Layout>
     <Content
-      style={{ background: '#fff', padding: 24, margin: 0, minHeight: 'calc(100vh - 88px)' }}
+      style={{
+        background: '#fff',
+        padding: '90px 24px 0 24px',
+        margin: 0,
+        minHeight: 'calc(100vh - 88px)'
+      }}
     >
       {children}
     </Content>

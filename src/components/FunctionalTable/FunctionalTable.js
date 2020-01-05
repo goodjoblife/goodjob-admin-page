@@ -36,7 +36,9 @@ type Props = {
   nData: number,
   page: number,
   pageSize: number,
-  handleTableChange: (pagination: { [string]: any }) => void
+  handleTableChange: (pagination: { [string]: any }) => void,
+
+  size: string
 };
 
 const FunctionalTable = ({
@@ -59,7 +61,9 @@ const FunctionalTable = ({
   nData,
   page,
   pageSize,
-  handleTableChange
+  handleTableChange,
+
+  size
 }: Props) => (
   <React.Fragment>
     <EditModal
@@ -86,6 +90,7 @@ const FunctionalTable = ({
       onChange={handleTableChange}
       scroll={{ x: columns.map(() => 200).reduce((a, b) => a + b, 0) }}
       loading={isLoading}
+      size={size}
     />
   </React.Fragment>
 );

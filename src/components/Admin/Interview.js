@@ -28,7 +28,7 @@ const COLUMNS = [
     title: '創建時間',
     dataIndex: 'created_at',
     key: 'created_at',
-    render: createdAt => moment(createdAt).format('LLLL'),
+    render: createdAt => moment(createdAt).format(),
     sorter: true
   },
   {
@@ -44,7 +44,21 @@ const COLUMNS = [
     searchable: true
   },
   { title: '標題', dataIndex: 'title', key: 'title' },
-  { title: '地區', dataIndex: 'region', key: 'region' },
+  {
+    title: '內文',
+    dataIndex: 'sections',
+    key: 'sections',
+    render: sections => {
+      if (sections) {
+        const content = sections.reduce(
+          (str, section) => `${str} ${section.subtitle} ${section.content}`,
+          ''
+        );
+        return content.length > 50 ? `${content.substring(0, 50)}...` : content;
+      }
+      return null;
+    }
+  },
   {
     title: '封存狀態',
     dataIndex: 'archive_status',
@@ -89,7 +103,8 @@ const Interview = ({ setSearchObj, expData, ...restProps }: Props & PropsFromHOC
     <FunctionalTable
       _columns={COLUMNS}
       dataSource={expData}
-      displayedFormFields={['_id', 'title', 'company', 'job_title', 'region']}
+      displayedFormFields={['_id', 'title', 'company', 'job_title']}
+      size="small"
       {...restProps}
     />
   </AdminLayout>

@@ -1,6 +1,6 @@
 // @flow
 import { withClientState } from 'apollo-link-state';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache, defaultDataIdFromObject } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloClient } from 'apollo-client';
@@ -11,7 +11,16 @@ import resolvers from '../graphql/resolvers';
 
 const REACT_APP_API_HOST = process.env.REACT_APP_API_HOST || '';
 
-const cache = new InMemoryCache();
+const cache = new InMemoryCache({
+  dataIdFromObject: object => {
+    switch (object.__typename) {
+      case 'Section':
+        return null;
+      default:
+        return defaultDataIdFromObject(object);
+    }
+  }
+});
 
 const stateLink = withClientState({
   cache,

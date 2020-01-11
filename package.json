@@ -12,7 +12,6 @@
     "apollo-link-state": "^0.4.1",
     "bowser": "^1.8.1",
     "classnames": "^2.2.5",
-    "express": "^4.16.3",
     "graphql": "^0.13.2",
     "graphql-tag": "^2.9.2",
     "history": "^4.7.2",
@@ -43,7 +42,6 @@
     "lint": "eslint ./",
     "pre-release": "yarn flow && yarn lint",
     "release": "yarn run pre-release && yarn build",
-    "production-server": "NODE_ENV=production node server.js",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "lint-staged": {

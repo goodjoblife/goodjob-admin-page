@@ -1,16 +1,19 @@
 FROM node:10
 
-COPY . /app
-
-WORKDIR /app
-
 ARG REACT_APP_API_HOST
 
 ENV REACT_APP_API_HOST="${REACT_APP_API_HOST}"
 
+COPY . /app
+
+WORKDIR /app
 
 RUN yarn install && yarn run release && yarn cache clean
 
-EXPOSE 80
+FROM nginx:alpine
 
-CMD ["npm", "run", "production-server"]
+COPY ./docker/default.conf /etc/nginx/conf.d/default.conf
+
+WORKDIR /app
+
+COPY --from=0 /app/build .
